@@ -1,4 +1,10 @@
 use inc::Module::Install;
+use Module::Install::ReadmeFromPod;
+use Module::Install::TestBase;
+use Module::Install::Repository;
+use Module::Install::AuthorTests;
+use Test::Exception;
+
 name 'Convert-PEM';
 all_from 'lib/Convert/PEM.pm';
 readme_from 'lib/Convert/PEM.pm';
