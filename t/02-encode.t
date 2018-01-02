@@ -25,7 +25,7 @@ $blob = $pem->encode( Content => $obj, Password => 'xx' );
 ok $blob, 'encode gave us something';
 $obj2 = $pem->decode( Content => $blob );
 ok !defined $obj2, 'decode fails on encrypted input';
-like $pem->errstr, qr/^Decryption failed/, 'errstr matches decrypt failed';
+like $pem->errstr, qr/^Decryption failed/, 'errstr of "'.$pem->errstr.'" matches decrypt failed';
 $obj2 = $pem->decode( Content => $blob, Password => 'xx' );
 is $obj->{TestObject}{int}, $obj2->{TestObject}{int}, 'input matches output';
 
