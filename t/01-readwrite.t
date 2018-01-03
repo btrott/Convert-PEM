@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 16;
+use Test::More tests => 17;
 use Test::Exception;
 
 use Convert::PEM;
@@ -30,6 +30,7 @@ ok -e $objfile, 'output file exists';
 lives_ok { $obj2 = $pem->read( Filename => $objfile ) } 'can read';
 ok !defined $obj2, 'cannot read encrypted file';
 like $pem->errstr, qr/^Decryption failed/, 'errstr matches decryption failed';
+ok -e $objfile, 'encrypted output file exists';
 lives_ok { $obj2 = $pem->read( Filename => $objfile, Password => 'xx') } 'can read';
 is $obj->{TestObject}{int}, $obj2->{TestObject}{int}, 'input matches output';
 unlink $objfile;
